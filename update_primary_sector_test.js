@@ -1,4 +1,6 @@
-﻿let settings = input.config({
+﻿// updates a single record`s major sector field using Claude API
+
+let settings = input.config({
     title: 'Claude API Configuration',
     items: [
         input.config.text('apiKey', {
