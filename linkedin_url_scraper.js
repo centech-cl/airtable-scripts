@@ -1,8 +1,8 @@
 ﻿// Airtable script to scrape LinkedIn URLs from company websites
 // Fetches the "Site Web" URL and looks for LinkedIn links in the HTML
 
-let table = base.getTable("master");
-let query = await table.selectRecordsAsync({fields: ["Name", "Site Web", "URL LinkedIn Company"]});
+let table = base.getTable("MDSS - CAN");
+let query = await table.selectRecordsAsync({fields: ["Name", "website", "linkedin"]});
 
 // Configuration
 const REQUEST_DELAY = 15; // 1.5 second delay between requests to be respectful
@@ -180,8 +180,8 @@ let recordsToProcess = query.records; // Change to .slice(0, 10) to test with 10
 
 for (let [index, record] of recordsToProcess.entries()) {
     let nameValue = record.getCellValue("Name");
-    let siteWebValue = record.getCellValue("Site Web");
-    let linkedInValue = record.getCellValue("URL LinkedIn Company");
+    let siteWebValue = record.getCellValue("website");
+    let linkedInValue = record.getCellValue("linkedin");
     
     // Extract values
     // Name might be Single Select or text
@@ -217,7 +217,7 @@ for (let [index, record] of recordsToProcess.entries()) {
         updates.push({
             id: record.id,
             fields: {
-                "URL LinkedIn Company": foundLinkedIn
+                "linkedin": foundLinkedIn
             }
         });
         

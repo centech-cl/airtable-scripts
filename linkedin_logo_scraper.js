@@ -104,7 +104,7 @@ for (let record of records.records) {
         
         // Update the record with the logo
         await table.updateRecordAsync(record.id, {
-            'Logo': [{ url: logoUrl, filename: `${companyName}_logo.jpg` }]
+            'logo': [{ url: logoUrl, filename: `${companyName}_logo.jpg` }]
         });
         
         console.log(`💾 Logo saved successfully!`);
